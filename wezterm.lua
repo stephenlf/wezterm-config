@@ -10,30 +10,27 @@ config.color_scheme = 'AdventureTime'
 config.default_prog = { 'fish' }
 
 config.keys = {
-  -- Create a new tab in the same domain as the current pane.
+  -- Tabs
   {
-	  key = 't',
+	  key = 'n',
 	  mods = 'ALT',
 	  action = wezterm.action.SpawnTab 'CurrentPaneDomain',
   },
-  -- Close current tab
   {
 	  key = 'w',
 	  mods = 'ALT',
 	  action = wezterm.action.CloseCurrentTab { confirm = false } ,
   },
-  {
-	  key = 'n',
-	  mods = 'ALT',
-	  action = wezterm.action.SplitHorizontal,
-  },
-  {
-	  key = 'm',
-	  mods = 'ALT',
-	  action = wezterm.action.SplitVertical,
-  },
-  {       key = '[', mods = 'ALT', action = wezterm.action.ActivateTabRelative(-1) },
-  {	  key = ']', mods = 'ALT', action = wezterm.action.ActivateTabRelative(1) },
+  {  key = '[', mods = 'ALT', action = wezterm.action.ActivateTabRelative(-1) },
+  {  key = ']', mods = 'ALT', action = wezterm.action.ActivateTabRelative(1) },
+
+  -- Panes
+  {  key = 'n', mods = 'CTRL', action = wezterm.action.SplitHorizontal, },
+  {  key = 'm', mods = 'CTRL', action = wezterm.action.SplitVertical,  },
+  {  key = '[', mods = 'CTRL', action = wezterm.action.RotatePanes 'CounterClockwise' },
+  {  key = ']', mods = 'CTRL', action = wezterm.action.RotatePanes 'Clockwise' },
+  {  key = 'w', mods = 'CTRL', action = wezterm.action.CloseCurrentPane { confirm = true } },
+  {  key = 'o', mods = 'CTRL', action = wezterm.action.PaneSelect },
 }
 
 for i = 1, 8 do
